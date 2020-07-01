@@ -1,0 +1,18 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: scl-eureka-client-provider
+eureka:
+  instance:
+    lease-renewal-interval-in-seconds: 5 # 服务刷新时间每隔这个时间主动心跳一次
+    lease-expiration-duration-in-seconds: 15 # 服务过期时间配置，超过这个时间没有收到心跳就移除该实例。一般为服务刷新时间的三倍
+  client:
+    register-with-eureka: true # 是否注册到服务注册中心
+    fetch-registry: false # 是否从注册中心抓取信息，若不存在服务调用设置为false即可，反之则设置为true
+    service-url:
+      defaultZone: http://root:123456@test1:8100/eureka-server1/eureka,http://root:123456@test2:8200/eureka-server2/eureka,http://root:123456@test3:8300/eureka-server3/eureka # 服务注册中心地址
+management:
+  endpoint:
+    health:
+      show-details: always # 总是展示详细的健康检查信息
