@@ -1,0 +1,30 @@
+server:
+  port: 8090
+spring:
+  application:
+    name: scl-eureka-client-consumer
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    register-with-eureka: true # 是否注册到服务注册中心
+    fetch-registry: true # 是否从注册中心抓取信息，若不存在服务调用设置为false即可，反之则设置为true
+    registry-fetch-interval-seconds: 5 # 每5秒刷新一下本地缓存
+    service-url:
+      defaultZone: http://root:123456@test1:8100/eureka-server1/eureka,http://root:123456@test2:8200/eureka-server2/eureka,http://root:123456@test3:8300/eureka-server3/eureka # 服务注册中心地址
+feign:
+  hystrix:
+    enabled: true # 启用Hystrix
+ribbon:
+  server-list-refresh-interval: 5000 # ribbon每5秒刷新一下server list
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info,health,hystrix-stream # actuator暴露端点
+  endpoint:
+    health:
+      show-details: always # 总是展示详细的健康检查信息
