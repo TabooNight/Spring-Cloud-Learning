@@ -1,0 +1,12 @@
+server:
+  port: 8100 # 监听端口
+  servlet:
+    context-path: /eureka-server1 # 请求路径
+eureka:
+  instance:
+    hostname: test1 # 主机名称
+  client:
+    register-with-eureka: true # 是否注册到服务注册中心，单节点可设置为false，集群必须设置为true。集群设置为false，该节点会被设置为unavailable-replicas
+    fetch-registry: false # 是否从注册中心抓取信息，若不存在服务调用设置为false即可，反之则设置为true
+    service-url:
+      defaultZone: http://root:123456@test2:8200/eureka-server2/eureka,http://root:123456@test3:8300/eureka-server3/eureka
