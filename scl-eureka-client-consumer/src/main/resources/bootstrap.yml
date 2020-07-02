@@ -1,6 +1,0 @@
-spring:
-  cloud:
-    config:
-      uri: http://localhost:8600/
-      profile: prod
-      label: master
