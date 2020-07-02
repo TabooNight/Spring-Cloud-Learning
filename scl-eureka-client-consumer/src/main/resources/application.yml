@@ -24,7 +24,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: info,health,hystrix-stream # actuator暴露端点
+        include: info,health,hystrix-stream,refresh # actuator暴露端点
   endpoint:
     health:
       show-details: always # 总是展示详细的健康检查信息
