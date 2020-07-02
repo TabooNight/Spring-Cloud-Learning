@@ -4,3 +4,12 @@ spring:
       uri: http://localhost:8600
       profile: prod
       label: master
+      username: root
+      password: 123456
+encrypt:
+  #key: test
+  key-store:
+    location: 'file:///E:/Spring Cloud/encry/server.jks'
+    password: 123456 # storepass
+    alias: configKey # alias
+    secret: 123456 # keypass

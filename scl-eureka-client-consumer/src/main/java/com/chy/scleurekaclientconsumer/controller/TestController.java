@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -23,6 +24,8 @@ public class TestController {
 
     @Value("${profile}")
     private String profile;
+    @Value("${password}")
+    private String password;
 
     @Autowired
     public TestController(TestFeign feign) {
@@ -35,8 +38,11 @@ public class TestController {
     }
 
     @GetMapping("/config")
-    public String getConfig() {
-        return this.profile;
+    public Map<String, String> getConfig() {
+        Map<String, String> map = new HashMap<>();
+        map.put("profile", this.profile);
+        map.put("password", password);
+        return map;
     }
 
 }
