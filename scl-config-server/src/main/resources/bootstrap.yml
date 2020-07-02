@@ -1,0 +1,13 @@
+encrypt:
+  #key: test
+  key-store:
+    location: 'file:///E:/Spring Cloud/encry/server.jks'
+    password: 123456 # storepass
+    alias: configKey # alias
+    secret: 123456 # keypass
+spring:
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
