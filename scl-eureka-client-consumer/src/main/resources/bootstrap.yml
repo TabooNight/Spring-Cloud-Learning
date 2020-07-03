@@ -1,11 +1,20 @@
 spring:
   cloud:
     config:
-      uri: http://localhost:8600
       profile: prod
       label: master
       username: root
       password: 123456
+      discovery:
+        enabled: true # 使用服务注册中心中的Config Server，默认false
+        service-id: scl-config-server # 指定Config Server在服务注册中心的名称，默认是configserver
+eureka:
+  client:
+    register-with-eureka: true # 是否注册到服务注册中心
+    fetch-registry: true # 是否从注册中心抓取信息，若不存在服务调用设置为false即可，反之则设置为true
+    registry-fetch-interval-seconds: 5 # 每5秒刷新一下本地缓存
+    service-url:
+      defaultZone: http://root:123456@test1:8100/eureka-server1/eureka,http://root:123456@test2:8200/eureka-server2/eureka,http://root:123456@test3:8300/eureka-server3/eureka # 服务注册中心地址
 encrypt:
   #key: test
   key-store:
