@@ -33,7 +33,7 @@ class TestFeignFallback implements FallbackFactory<TestFeign> {
         return new TestFeign() {
             @Override
             public Map<String, String> getTest() {
-                log.info("fallback; reason was: ", throwable);
+                log.error("fallback; reason was: " + throwable);
                 return new HashMap<>();
             }
         };

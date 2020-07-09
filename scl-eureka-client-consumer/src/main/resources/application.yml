@@ -1,8 +1,12 @@
 server:
   port: 8090
 spring:
-  application:
-    name: scl-eureka-client-consumer
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
   rabbitmq:
     host: 127.0.0.1
     port: 5672
