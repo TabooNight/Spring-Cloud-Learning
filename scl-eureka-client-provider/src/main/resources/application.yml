@@ -1,8 +1,17 @@
 server:
   port: 8080
 spring:
-  application:
-    name: scl-eureka-client-provider
+  zipkin:
+    sender:
+      type: rabbit
+  sleuth:
+    sampler:
+      probability: 1.0
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
 eureka:
   instance:
     lease-renewal-interval-in-seconds: 5 # 服务刷新时间每隔这个时间主动心跳一次
